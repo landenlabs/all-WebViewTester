@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ComboBox">
+        <!--
+        <attr name="bounded_width" format="dimension" />
+        <attr name="bounded_height" format="dimension" />
+        <attr name="android:hint" format="string" />
+        -->
+        <attr name="android:entries" />
+        <attr name="android:hint" />
+        <attr name="android:textSize" />
+        <attr name="selectOnly" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="StretchLinearLayout">
+        <attr name="minWidth" format="dimension" />
+        <attr name="maxWidth" format="dimension" />
+        <attr name="minHeight" format="dimension" />
+        <attr name="maxHeight" format="dimension" />
+        <attr name="minWidthInside" format="dimension" />
+        <attr name="maxWidthInside" format="dimension" />
+        <attr name="minHeightInside" format="dimension" />
+        <attr name="maxHeightInside" format="dimension" />
+        <attr name="minWidthOutside" format="dimension" />
+        <attr name="maxWidthOutside" format="dimension" />
+        <attr name="minHeightOutside" format="dimension" />
+        <attr name="maxHeightOutside" format="dimension" />
+        <attr name="layout_gravity">
+            <flag name="none" value="0x0" />
+            <flag name="left" value="0x3" />
+            <flag name="right" value="0x5" />
+            <flag name="center" value="0x11" />
+            <flag name="center_horizontal" value="0x1" />
+            <flag name="center_vertical" value="0x10" />
+            <flag name="top" value="0x30" />
+            <flag name="bottom" value="0x50" />
+        </attr>
+        <attr name="layout_below" format="reference" />
+        <attr name="layout_above" format="reference" />
+        <attr name="layout_toLeftOf" format="reference" />
+        <attr name="layout_toRightOf" format="reference" />
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,141 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e0e0e0"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/webTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffe0e0"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="WebView"
+        android:textSize="16sp" />
+
+    <com.landenlabs.all_webviewtester.ui.ComboBox
+        android:id="@+id/webUrlCb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/webTitle"
+        android:entries="@array/webUrlArray"
+        android:hint="@string/webUrlHint" />
+
+    <LinearLayout
+        android:id="@+id/webNavBtnBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/webUrlCb"
+        android:background="#c0c0c0"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/webNavPrev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/webBackward" />
+
+        <Button
+            android:id="@+id/webNavGo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/webGo" />
+
+        <Button
+            android:id="@+id/webNavNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/webForward" />
+
+    </LinearLayout>
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/webNavBtnBar"
+        android:background="#c0c0c0"
+        android:minHeight="200dp"
+          />
+
+    <com.landenlabs.all_webviewtester.ui.StretchLinearLayout
+        android:orientation="vertical"
+        android:background="#c0c0c0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        custom:maxHeight="400dp"
+        custom:minHeightOutside="200dp"
+        custom:minHeightInside="0dp"
+        custom:layout_gravity="bottom"
+        custom:layout_below="@id/webView"
+        android:layout_alignParentBottom="true" >
+
+        <FrameLayout
+
+            android:id="@+id/webStatusTbHolder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/grad_bar"
+                android:gravity="center_vertical" />
+
+            <ToggleButton
+                android:id="@+id/webStatusShowTb"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:background="@android:color/transparent"
+                android:includeFontPadding="false"
+                android:textOff="@string/TbOff"
+                android:textOn="@string/TbOn" />
+
+            <TextView
+                android:id="@+id/webStatusBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:includeFontPadding="false"
+                android:text="Status" />
+
+            <TextView
+                android:id="@+id/webStatusClearBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="right"
+                android:includeFontPadding="false"
+                android:text="clr" />
+
+        </FrameLayout>
+
+        <ScrollView
+            android:id="@+id/webStatusSv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/webStatusTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Web Status"
+                />
+        </ScrollView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="---bottom---"/>
+
+    </com.landenlabs.all_webviewtester.ui.StretchLinearLayout>
+</RelativeLayout>

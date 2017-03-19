@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/webSetTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffe0e0"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="WebSettings"
+        android:textSize="16sp" />
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:id="@+id/ws_apply_btn"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Apply"
+        />
+
+    <ScrollView
+        android:layout_below="@id/webSetTitle"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/ws_apply_btn"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#d0d0f0"
+                android:text="Web Settings"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:descendantFocusability="beforeDescendants"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/ws_allow_java"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Allow JavaScript" />
+
+                <CheckBox
+                    android:id="@+id/ws_dom_storage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="DOM Storage Enabled" />
+
+                <CheckBox
+                    android:id="@+id/ws_java_open_window"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="JavaScript Can Open Window" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#202020"
+                        />
+
+                <CheckBox
+                    android:id="@+id/ws_save_form"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Save Form Data" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="User Agent String:"
+                    />
+                <EditText
+                    android:id="@+id/ws_user_agent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="User Agent String" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Initial Scale(1 to 100):"
+                    />
+                <EditText
+                    android:id="@+id/ws_initial_scale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Initial scale 1..100" />
+
+                <CheckBox
+                    android:id="@+id/ws_user_client"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Add User Client" />
+
+                <CheckBox
+                    android:id="@+id/ws_chrome_client"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Add Chrome Client" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#202020"
+                        />
+
+                <CheckBox
+                    android:id="@+id/ws_content_access"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Allow Content Access" />
+
+                <CheckBox
+                    android:id="@+id/ws_file_access"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Allow File Access" />
+
+                <CheckBox
+                    android:id="@+id/ws_file_access_url"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Allow File Access from URL" />
+
+                <CheckBox
+                    android:id="@+id/ws_universal_access"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Allow Universal Access From File" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#202020"
+                        />
+
+                <CheckBox
+                    android:id="@+id/ws_cache"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="App Cache Enabled" />
+
+                <com.landenlabs.all_webviewtester.ui.ComboBox
+                    android:id="@+id/ws_cache_mode_cb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:entries="@array/cacheModeArray"
+                    android:hint="Cache Mode"
+                    custom:selectOnly="true" />
+
+                <com.landenlabs.all_webviewtester.ui.ComboBox
+                    android:id="@+id/ws_cache_max_cb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:entries="@array/cacheMaxSizeArray"
+                    android:hint="Cache Max Size" />
+
+                <!-- SetAppCachePath -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#202020"
+                        />
+
+                <CheckBox
+                    android:id="@+id/ws_block_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Block Network Image" />
+
+                <CheckBox
+                    android:id="@+id/ws_load_images"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Load Images Automatically" />
+
+                <CheckBox
+                    android:id="@+id/ws_block_loads"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Block Network Loads" />
+
+                <CheckBox
+                    android:id="@+id/ws_builtin_zoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Builtin Zoom Controls" />
+
+                <CheckBox
+                    android:id="@+id/ws_display_builtin_zoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Display Zoom Controls" />
+
+                <CheckBox
+                    android:id="@+id/ws_support_zoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Support Zoom" />
+
+                <CheckBox
+                    android:id="@+id/ws_geolocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Geolocation Enabled" />
+
+                <CheckBox
+                    android:id="@+id/ws_overlay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Overview Mode" />
+
+                <CheckBox
+                    android:id="@+id/ws_wide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Use Wide View Port" />
+
+                <!--
+                <CheckBox
+                    android:id="@+id/ws_overview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="Overview Mode" />
+                 wsi-->
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#d0d0f0"
+                android:text="Status"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/wss_show_console"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Show Console" />
+
+                <CheckBox
+                    android:id="@+id/wss_show_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Show Progress" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

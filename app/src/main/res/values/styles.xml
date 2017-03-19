@@ -1,0 +1,13 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <!-- Theme.AppCompat.Light.DarkActionBar -->
+    <!-- android:Theme.Material.Light.DarkActionBar  api 21 -->
+
+    <!-- Must use Theme.AppCompat.* to match main activity -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="icon">@drawable/webtester</item>
+    </style>
+
+</resources>

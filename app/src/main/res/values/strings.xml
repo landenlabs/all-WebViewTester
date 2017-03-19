@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">all WebView Tester</string>
+
+    <string name="webSetTitle">Web Settings</string>
+    <string name="webViewTitle">Web Viewer</string>
+    <string name="webMemTitle">Web Memory</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="title_webview">WebView</string>
+    <string name="title_test">Test</string>
+
+    <string name="TbOn">"[-]"</string>
+    <string name="TbOff">"&lt;-&gt;"</string>
+
+    <string name="webUrlHint">Url...</string>
+    <string name="webBackward">"&lt;-"</string>
+    <string name="webGo">Go</string>
+    <string name="webForward">"->"</string>
+
+    <string-array name="webUrlArray">
+        <item>http://static.globalnews.ca/content/weather-app/320x50.html#bc&amp;home</item>
+        <item>http://maps.google.com</item>
+        <item>http://www.wsi.com</item>
+        <item>http://www.cnn.com</item>
+        <item>http://npr.org</item>
+        <item>https://www.typeform.com/</item>
+        <item>https://www.etsy.com/</item>
+        <item>https://www.buzzfeed.com/</item>
+        <item>https://evernote.com</item>
+        <item>http://landenlabs.com/index.html</item>
+        <item>http://landenlabs.com/android/mobile/index.html</item>
+        <item>http://landenlabs.com/images/image100.png</item>
+        <item>http://landenlabs.com/images/image200.png</item>
+        <item>http://landenlabs.com/images/image400.png</item>
+        <item>http://landenlabs.com/images/image600.png</item>
+        <item>http://montgomery.raycomweather.com/2016/09/steady-as-she-goes.html</item>
+    </string-array>
+
+    <string-array name="cacheMaxSizeArray">
+        <item>1000</item>
+        <item>2000</item>
+        <item>4000</item>
+        <item>8000</item>
+    </string-array>
+
+    <string-array name="cacheModeArray">
+        <item>LOAD_DEFAULT</item>
+        <item>LOAD_CACHE_ELSE_NETWOR</item>
+        <item>LOAD_NO_CACHE</item>
+        <item>LOAD_CACHE_ONLY</item>
+    </string-array>
+</resources>
