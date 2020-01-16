@@ -73,6 +73,7 @@ media  and  formats. Subject to Section 8(f), all rights not expressly granted
 by Licensor are hereby reserved.
 */
 
+@SuppressWarnings("FieldCanBeLocal")
 public class ComboBox extends LinearLayout implements EditText.OnEditorActionListener, AdapterView.OnItemSelectedListener   {
 
     private AutoCompleteTextView m_autoCompleteTv;

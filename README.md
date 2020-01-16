@@ -1,9 +1,16 @@
 # a LanDen Labs - WebViewTester 
 Android WebView Tester
+<br>
+15-Jan-2020
+<br>
+API 28, Android, Java
 
 Test WebView object with Settings and WebView fragment, plus scroll log of progress status.
 
-Apk v1.0 available in app directory. 
+Apk v1.01.15 available in app directory. 
+
+  [![Build status](https://travis-ci.org/landenlabs/all_WebViewTester.svg?branch=master)](https://travis-ci.org/landenlabs/all_WebViewTester)
+
 
 WebSite
 [http://landenlabs.com/android/webviewtester/webviewtester.html](http://landenlabs.com/android/webviewtester/webviewtester.html)

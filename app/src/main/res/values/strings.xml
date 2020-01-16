@@ -20,6 +20,7 @@
 
     <string-array name="webUrlArray">
         <item>http://static.globalnews.ca/content/weather-app/320x50.html#bc&amp;home</item>
+        <item>http://www.ksl.com/?sid=36755422&amp;nid=1361</item>
         <item>http://maps.google.com</item>
         <item>http://www.wsi.com</item>
         <item>http://www.cnn.com</item>
