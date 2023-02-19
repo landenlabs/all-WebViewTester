@@ -19,23 +19,26 @@
     <string name="webForward">"->"</string>
 
     <string-array name="webUrlArray">
-        <item>http://static.globalnews.ca/content/weather-app/320x50.html#bc&amp;home</item>
-        <item>http://www.ksl.com/?sid=36755422&amp;nid=1361</item>
-        <item>http://maps.google.com</item>
-        <item>http://www.wsi.com</item>
-        <item>http://www.cnn.com</item>
-        <item>http://npr.org</item>
+        <item>https://www.kfyrtv.com/2021/02/22/local-weather-links/</item>
+        <item>https://wjfw.com/wsiapp/nwfg_320x50.html</item>
+        <item>https://static.globalnews.ca/content/weather-app/320x50.html#bc&amp;home</item>
+        <item>https://b2b-test-data.media.weather.com/clock1.html</item>
+        <item>https://www.ksl.com/?sid=36755422&amp;nid=1361</item>
+        <item>https://maps.google.com</item>
+        <item>https://www.wsi.com</item>
+        <item>https://www.cnn.com</item>
+        <item>https://npr.org</item>
         <item>https://www.typeform.com/</item>
         <item>https://www.etsy.com/</item>
         <item>https://www.buzzfeed.com/</item>
         <item>https://evernote.com</item>
-        <item>http://landenlabs.com/index.html</item>
-        <item>http://landenlabs.com/android/mobile/index.html</item>
-        <item>http://landenlabs.com/images/image100.png</item>
-        <item>http://landenlabs.com/images/image200.png</item>
-        <item>http://landenlabs.com/images/image400.png</item>
-        <item>http://landenlabs.com/images/image600.png</item>
-        <item>http://montgomery.raycomweather.com/2016/09/steady-as-she-goes.html</item>
+        <item>https://landenlabs.com/index.html</item>
+        <item>https://landenlabs.com/android/mobile/index.html</item>
+        <item>https://landenlabs.com/images/image100.png</item>
+        <item>https://landenlabs.com/images/image200.png</item>
+        <item>https://landenlabs.com/images/image400.png</item>
+        <item>https://landenlabs.com/images/image600.png</item>
+        <item>https://montgomery.raycomweather.com/2016/09/steady-as-she-goes.html</item>
     </string-array>
 
     <string-array name="cacheMaxSizeArray">

@@ -60,29 +60,25 @@
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_above="@+id/bottom_status_holder"
         android:layout_below="@id/webNavBtnBar"
         android:background="#c0c0c0"
-        android:minHeight="200dp"
-          />
+        android:minHeight="200dp" />
 
-    <com.landenlabs.all_webviewtester.ui.StretchLinearLayout
-        android:orientation="vertical"
-        android:background="#c0c0c0"
+    <LinearLayout
+        android:id="@+id/bottom_status_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        custom:maxHeight="400dp"
-        custom:minHeightOutside="200dp"
-        custom:minHeightInside="0dp"
-        custom:layout_gravity="bottom"
-        custom:layout_below="@id/webView"
-        android:layout_alignParentBottom="true" >
+        android:layout_alignParentBottom="true"
+        android:maxHeight="300dp"
+        android:orientation="vertical">
 
         <FrameLayout
-
             android:id="@+id/webStatusTbHolder"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            custom:layout_constraintTop_toTopOf="parent">
 
             <View
                 android:layout_width="match_parent"
@@ -118,24 +114,14 @@
 
         </FrameLayout>
 
-        <ScrollView
-            android:id="@+id/webStatusSv"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/webStatusTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Web Status"
-                />
-        </ScrollView>
-
         <TextView
+            android:id="@+id/webStatusTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="---bottom---"/>
+            android:hint="Web Status"
+            android:maxHeight="300dp"
+            tools:text="1blah\n2blah\n3blah\n1blah\n2blah\n3blah\n1blah\n2blah\n3blah\n1blah\n2blah\n3blah\n1blah\n2blah\n3blah\n1blah\n2blah\n3blah\n1blah\n2blah\n3blah\n1blah\n2blah\n3blah\n1blah\n2blah\n3blah\n" />
 
-    </com.landenlabs.all_webviewtester.ui.StretchLinearLayout>
+    </LinearLayout>
+
 </RelativeLayout>

@@ -36,6 +36,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
+import androidx.annotation.RequiresApi;
+
 import com.landenlabs.all_webviewtester.ui.ComboBox;
 import com.landenlabs.all_webviewtester.ui.Ui;
 import com.landenlabs.all_webviewtester.util.WLog;
@@ -51,6 +53,7 @@ public class WebSettingsFrag extends WebFragment
     private final WLog wLog = WLog.DBG;
     private View m_rootView;
 
+    private CheckBox m_ws_mixed_content_ck;
     private CheckBox m_ws_allow_java_ck;
     private CheckBox m_ws_dom_storage_ck;
     private CheckBox m_ws_java_open_window_ck;
@@ -179,6 +182,11 @@ public class WebSettingsFrag extends WebFragment
 
         int id = buttonView.getId();
         switch (id) {
+            case R.id.ws_mixed_content:
+                if (Build.VERSION.SDK_INT >= 21) { // Build.VERSION_CODES.LOLLIPOP
+                    webSettings.setMixedContentMode(isChecked ? WebSettings.MIXED_CONTENT_ALWAYS_ALLOW : WebSettings.MIXED_CONTENT_NEVER_ALLOW);
+                }
+                break;
             case R.id.ws_allow_java:
                 webSettings.setJavaScriptEnabled(isChecked);
                 break;
@@ -255,6 +263,7 @@ public class WebSettingsFrag extends WebFragment
     // ---------------------------------------------------------------------------------------------
 
     private void setupWebSettings(View rootView) {
+        m_ws_mixed_content_ck = Ui.needViewById(rootView, R.id.ws_mixed_content);
         m_ws_allow_java_ck = Ui.needViewById(rootView, R.id.ws_allow_java);
         m_ws_dom_storage_ck = Ui.needViewById(rootView, R.id.ws_dom_storage);
         m_ws_java_open_window_ck = Ui.needViewById(rootView, R.id.ws_java_open_window);
@@ -288,6 +297,7 @@ public class WebSettingsFrag extends WebFragment
     }
 
     private void setupWebSettingsListeners(WebSettingsFrag obj) {
+        m_ws_mixed_content_ck.setOnCheckedChangeListener(obj);
         m_ws_allow_java_ck.setOnCheckedChangeListener(obj);
         m_ws_dom_storage_ck.setOnCheckedChangeListener(obj);
         m_ws_java_open_window_ck.setOnCheckedChangeListener(obj);
@@ -324,6 +334,11 @@ public class WebSettingsFrag extends WebFragment
 
         wLog.d("updateWebSettingsU");
         WebSettings webSettings = m_webShare.getWebInfo().m_webView.getSettings();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            m_ws_mixed_content_ck.setChecked(webSettings.getMixedContentMode() == WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        } else {
+            m_ws_mixed_content_ck.setChecked(true);
+        }
         m_ws_allow_java_ck.setChecked(webSettings.getJavaScriptEnabled());
         m_ws_dom_storage_ck.setChecked(webSettings.getDomStorageEnabled());
 
@@ -388,7 +403,7 @@ public class WebSettingsFrag extends WebFragment
 
         try {
             int cacheSize = Integer.parseInt(m_ws_cache_max_cb.getText());
-            m_webShare.getWebInfo().m_webView.getSettings().setAppCacheMaxSize(cacheSize);
+            // m_webShare.getWebInfo().m_webView.getSettings().setAppCacheMaxSize(cacheSize);
         } catch (Exception ex) {}
 
         m_webShare.notifyChange();

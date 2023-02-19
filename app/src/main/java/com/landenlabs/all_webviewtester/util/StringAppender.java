@@ -83,4 +83,23 @@ public class StringAppender extends ArrayList<CharSequence> {
         // return String.valueOf(m_allParts);
         return new String(m_allParts, 0, totalLength);
     }
+
+    public CharSequence toCS() {
+        int totalLength = length();
+        if (totalLength == 0)
+            return "";
+
+        if (m_allParts == null || m_allParts.length < totalLength)
+            m_allParts = new char[totalLength];
+
+        int pos = 0;
+        for (CharSequence str : this) {
+            for (int idx = 0; idx < str.length(); idx++)
+                m_allParts[pos++] = str.charAt(idx);
+        }
+
+        // return String.valueOf(m_allParts);
+        // return m_allParts;
+        return java.nio.CharBuffer.wrap(m_allParts);
+    }
 }

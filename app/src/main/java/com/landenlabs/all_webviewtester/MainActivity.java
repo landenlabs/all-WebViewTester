@@ -22,19 +22,25 @@
 
 package com.landenlabs.all_webviewtester;
 
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.material.snackbar.Snackbar;
+import com.landenlabs.all_webviewtester.util.ShareUtil;
 
 import java.util.HashSet;
 import java.util.Locale;
@@ -46,12 +52,12 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity implements  WebShare {
 
     /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
+     * The {@link PagerAdapter} that will provide
      * fragments for each of the sections. We use a
      * {@link FragmentPagerAdapter} derivative, which will keep every
      * loaded fragment in memory. If this becomes too memory intensive, it
      * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
+     * {@link FragmentStatePagerAdapter}.
      */
     SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -128,11 +134,21 @@ public class MainActivity extends AppCompatActivity implements  WebShare {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.menu_share) {
+            share();
+            return true;    // handled
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void share() {
+        final Activity activity = this;
+        final String toEmail = "wsimobile1@gmail.com";
+        View rootView = mViewPager.getRootView();
+        Snackbar.make(rootView, "Sharing Log Files", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        ShareUtil.shareScreen(activity, rootView, toEmail, "Amazon Ad Test", null);
+        // ShareUtil.shareFileLog(activity);
     }
 
     // =============================================================================================

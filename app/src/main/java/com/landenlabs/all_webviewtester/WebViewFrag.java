@@ -25,8 +25,13 @@ package com.landenlabs.all_webviewtester;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.http.SslError;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.method.ScrollingMovementMethod;
+import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +44,9 @@ import android.webkit.JsResult;
 import android.webkit.PermissionRequest;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -97,6 +105,7 @@ public class WebViewFrag extends WebFragment  implements View.OnClickListener, W
         m_urlCb = Ui.needViewById(rootView, R.id.webUrlCb);
         m_webView = Ui.needViewById(rootView, R.id.webView);
         m_statusTv = Ui.needViewById(rootView, R.id.webStatusTv);
+        m_statusTv.setMovementMethod(new ScrollingMovementMethod());
         m_statusTitle = Ui.needViewById(rootView, R.id.webStatusBtn);
         Ui.needViewById(rootView, R.id.webStatusClearBtn).setOnClickListener(this);
         Ui.needViewById(rootView, R.id.webStatusShowTb).setOnClickListener(this);
@@ -195,12 +204,28 @@ public class WebViewFrag extends WebFragment  implements View.OnClickListener, W
 
     // =============================================================================================
     StringAppender m_strAppender = new StringAppender();
+    static final int MAX_STATUS = 50000;
+    static final int MAX_MSG = 80;
 
     private void appendStatus(String msg) {
         CharSequence currentStatus = m_statusTv.getText();
-        if (currentStatus.length() < 2000) {
-            m_strAppender.start(currentStatus).append("\n").append(msg);
-            m_statusTv.setText(m_strAppender.toString());
+        if (currentStatus.length() < MAX_STATUS) {
+            if (msg.length() > MAX_MSG) msg = msg.substring(0, MAX_MSG);
+            SpannableStringBuilder sb = new SpannableStringBuilder(currentStatus);
+            sb.append("\n").append(msg);
+            m_statusTv.setText(sb);
+            m_statusTv.bringToFront();
+        }
+    }
+
+    private void appendError(String msg) {
+        CharSequence currentStatus = m_statusTv.getText();
+        if (currentStatus.length() < MAX_STATUS) {
+            SpannableString errMsg = new SpannableString(msg);
+            errMsg.setSpan(new ForegroundColorSpan(Color.RED), 0, msg.length(), 0);
+            SpannableStringBuilder sb = new SpannableStringBuilder(currentStatus);
+            sb.append("\n").append(errMsg);
+            m_statusTv.setText(sb);
             m_statusTv.bringToFront();
         }
     }
@@ -248,14 +273,28 @@ public class WebViewFrag extends WebFragment  implements View.OnClickListener, W
                 }
 
                 @Override
+                public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                    appendError(String.format("  Error (%d) %s url\n%s",
+                            error.getErrorCode(), error.getDescription(), request.getUrl().toString()));
+                    super.onReceivedError(view, request, error);
+                }
+
+                @Override
+                public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
+                    appendError(String.format("  Error HTTP (%d) url\n%s",
+                            errorResponse.getStatusCode(), request.toString()));
+                    super.onReceivedHttpError(view, request, errorResponse);
+                }
+
+                @Override
                 public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                    appendStatus(String.format("  Error %s\n%s", description, failingUrl));
+                    appendError(String.format("  Error %s\n%s", description, failingUrl));
                     super.onReceivedError(view, errorCode, description, failingUrl);
                 }
 
                 @Override
                 public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-                    appendStatus(String.format("  SslError %s", error.getUrl()));
+                    appendError(String.format("  Error SSL %s", error.getUrl()));
                     super.onReceivedSslError(view, handler, error);
                 }
 

@@ -55,6 +55,13 @@
                 android:orientation="vertical">
 
                 <CheckBox
+                    android:id="@+id/ws_mixed_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Mixed Content (API 21+)" />
+
+                <CheckBox
                     android:id="@+id/ws_allow_java"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

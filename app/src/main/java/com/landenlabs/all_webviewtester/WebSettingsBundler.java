@@ -36,6 +36,11 @@ public class WebSettingsBundler {
     public static Bundle getBundleFor(WebSettings webSettings) {
         Bundle b = new Bundle();
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            b.putBoolean("m_ws_mixed_content_ck", webSettings.getMixedContentMode() == WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        } else {
+            b.putBoolean("m_ws_mixed_content_ck", true);
+        }
         b.putBoolean("m_ws_allow_java_ck", webSettings.getJavaScriptEnabled());
         b.putBoolean("m_ws_dom_storage_ck", webSettings.getDomStorageEnabled());
         b.putBoolean("m_ws_java_open_window_ck", webSettings.getJavaScriptCanOpenWindowsAutomatically());
@@ -77,6 +82,9 @@ public class WebSettingsBundler {
     }
 
     public static void  restoreSettings(WebSettings webSettings, Bundle b) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            webSettings.setMixedContentMode(b.getBoolean("m_ws_mixed_content_ck") ? WebSettings.MIXED_CONTENT_ALWAYS_ALLOW : WebSettings.MIXED_CONTENT_NEVER_ALLOW);
+        }
         webSettings.setJavaScriptEnabled(b.getBoolean("m_ws_allow_java_ck"));
         webSettings.setDomStorageEnabled(b.getBoolean("m_ws_dom_storage_ck"));
         webSettings.setJavaScriptCanOpenWindowsAutomatically(b.getBoolean("m_ws_java_open_window_ck"));

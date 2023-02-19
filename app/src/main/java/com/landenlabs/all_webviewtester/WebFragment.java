@@ -3,7 +3,7 @@ package com.landenlabs.all_webviewtester;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 /**
  * Created by Dennis Lang on 8/15/16.
