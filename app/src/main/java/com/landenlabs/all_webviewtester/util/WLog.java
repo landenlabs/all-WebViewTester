@@ -17,7 +17,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  *  @author Dennis Lang  (3/21/2015)
- *  @see http://landenlabs.com/
+ *  @see https://landenlabs.com/
  */
 
 package com.landenlabs.all_webviewtester.util;

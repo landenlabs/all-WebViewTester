@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
+
 import com.landenlabs.all_webviewtester.R;
 
 import java.util.ArrayList;

@@ -1,7 +1,9 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 33
+    namespace "com.landenlabs.all_webviewtester"
+    compileSdk 33
+
     defaultConfig {
         applicationId 'com.landenlabs.all_webviewtester'
         minSdkVersion 23

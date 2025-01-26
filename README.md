@@ -13,16 +13,16 @@ Apk v1.01.15 available in app directory.
 
 
 WebSite
-[http://landenlabs.com/android/webviewtester/webviewtester.html](http://landenlabs.com/android/webviewtester/webviewtester.html)
+[https://landenlabs.com/android/webviewtester/webviewtester.html](https://landenlabs.com/android/webviewtester/webviewtester.html)
 
 ***
 On large devices the landscape view draws the two fragments side-by-side:
 ***
-![Landscape View](http://landenlabs.com/android/webviewtester/landscape.png)
+![Landscape View](https://landenlabs.com/android/webviewtester/landscape.png)
 
 ***
 WebView settings page allows you to change available options and see how it impacts page display:
 ***
-![WebView settings page](http://landenlabs.com/android/webviewtester/settings.png)
+![WebView settings page](https://landenlabs.com/android/webviewtester/settings.png)
 
 
