@@ -1,13 +1,15 @@
+// All-WebViewTester
+// module build.gradle
 apply plugin: 'com.android.application'
 
 android {
     namespace "com.landenlabs.all_webviewtester"
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId 'com.landenlabs.all_webviewtester'
         minSdkVersion 23
-        targetSdkVersion 33
+        targetSdkVersion 34
 
         versionCode 100128
         versionName '13.01.05'
@@ -17,6 +19,8 @@ android {
     applicationVariants.all { variant ->
         variant.resValue "string", "versionName", "version " + variant.versionName
     }
+
+    buildFeatures.buildConfig = true
 
     buildTypes {
         release {
@@ -43,22 +47,24 @@ android {
         }
     }
 
+    /*
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+     */
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
 }
 
 // Rename app
 android.applicationVariants.all { variant ->
     variant.outputs.all {
-        def ourname = project.parent.name
-        outputFileName = "$ourname-${variant.name}-${variant.versionName}.apk"
+        def ourName = project.parent.name
+        outputFileName = "$ourName-${variant.name}-${variant.versionName}.apk"
         println "out name= $outputFileName"
     }
 }

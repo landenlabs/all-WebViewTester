@@ -18,7 +18,7 @@
  *  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  * @author Dennis Lang
- * @see https://landenlabs.com
+ * @see https://LanDenLabs.com
  * Part of project all-NetDiag
  */
 
