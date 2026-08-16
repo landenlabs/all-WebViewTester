@@ -1,0 +1,6 @@
+- `[x]` Modernize Gradle Groovy Syntax
+    - `[x]` Update `gradle/libs.versions.toml` with plugins section
+    - `[x]` Update `settings.gradle` with repository management
+    - `[x]` Update root `build.gradle` to use `plugins` block
+    - `[x]` Modernize `app/build.gradle` syntax and DSL
+    - `[x]` Verify build and project sync

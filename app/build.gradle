@@ -1,70 +1,64 @@
 // All-WebViewTester
 // module build.gradle
-apply plugin: 'com.android.application'
+plugins {
+    alias(libs.plugins.android.application)
+}
 
 android {
-    namespace "com.landenlabs.all_webviewtester"
-    compileSdk 34
+    namespace = "com.landenlabs.all_webviewtester"
+    compileSdk = 37
 
     defaultConfig {
-        applicationId 'com.landenlabs.all_webviewtester'
-        minSdkVersion 23
-        targetSdkVersion 34
+        applicationId = "com.landenlabs.all_webviewtester"
+        minSdk = 23
+        targetSdk = 34
 
-        versionCode 100128
-        versionName '13.01.05'
+        versionCode = 100128
+        versionName = "13.01.05"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Save app version in string so resource can be used in layouts
+        resValue "string", "versionName", "version " + versionName
     }
 
-    // Save app version in string so resource can be used in layouts
-    applicationVariants.all { variant ->
-        variant.resValue "string", "versionName", "version " + variant.versionName
+    buildFeatures {
+        buildConfig = true
+        resValues = true
     }
-
-    buildFeatures.buildConfig = true
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-    productFlavors {
-    }
-
-    lintOptions {
-        abortOnError false
-        disable 'DefaultLocale', 'SimpleDateFormat', 'InflateParams', 'SpUsage',
-                'UseCompoundDrawables', 'HandlerLeak', 'ViewConstructor', 'SetTextI18n',
-                'RtlSymmetry', 'RtlHardcoded', 'ContentDescription',
-                'MissingTranslation', 'ValidFragment', 'UnusedAttribute',
-                'FieldCanBeLocal', 'LocalSuppress', 'HardcodedText', 'Typos'
-    }
-
-    gradle.projectsEvaluated {
-        tasks.withType(JavaCompile) {
-            // Enable verbose lint reporting during build.
-            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+            minifyEnabled = false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
-    /*
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+    lint {
+        abortOnError = false
+        disable += ['DefaultLocale', 'SimpleDateFormat', 'InflateParams', 'SpUsage', 'UseCompoundDrawables', 'HandlerLeak', 'ViewConstructor', 'SetTextI18n', 'RtlSymmetry', 'RtlHardcoded', 'ContentDescription', 'MissingTranslation', 'ValidFragment', 'UnusedAttribute', 'FieldCanBeLocal', 'LocalSuppress', 'HardcodedText', 'Typos']
     }
-     */
+
+    tasks.withType(JavaCompile).configureEach {
+        // Enable verbose lint reporting during build.
+        options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+    }
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'com.google.android.material:material:1.12.0'
+    implementation libs.androidx.appcompat
+    implementation libs.material
 }
 
 // Rename app
-android.applicationVariants.all { variant ->
-    variant.outputs.all {
+androidComponents {
+    onVariants(selector().all()) { variant ->
         def ourName = project.parent.name
-        outputFileName = "$ourName-${variant.name}-${variant.versionName}.apk"
-        println "out name= $outputFileName"
+        variant.outputs.forEach { output ->
+            def versionStr = output.versionName.get()
+            def outFileName = "${ourName}-${variant.name}-${versionStr}.apk"
+            output.outputFileName.set(outFileName)
+            println "out name= ${outFileName}"
+        }
     }
 }
